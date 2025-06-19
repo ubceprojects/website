@@ -1,0 +1,46 @@
+#home-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* background-color: aqua; */
+}
+
+.home-award-text {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    font-size: 1.5vw;
+    color: var(--custom-darkblue);
+    text-align: center;
+}
+
+.home-heading {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-primary);
+    font-weight: 300;
+    font-size: 4vw;
+    color: var(--custom-darkblue);
+    text-align: center;
+}
+
+.home-subheading {
+    position: absolute;
+    top: 68%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-secondary);
+    font-weight: 400;
+    font-size: 1.5vw;
+    color: var(--custom-darkblue);
+    text-align: center;
+    width: 60vw;
+}

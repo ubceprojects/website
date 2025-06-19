@@ -1,0 +1,18 @@
+.custom-button {
+    background-color: var(--custom-darkblue);
+    color: white;
+    font-family: var(--font-custom);
+    font-size: 1.2vw;
+    padding: 1vw 1.5vw 0.8vw 1.5vw;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.custom-button:hover {
+    transform: translateY(-0.5vw) translateX(-50%) !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
