@@ -5,7 +5,6 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    /* background-color: aqua; */
 }
 
 .home-award-text {
@@ -15,19 +14,31 @@
     transform: translate(-50%, -50%);
     font-family: var(--font-secondary);
     font-weight: 500;
-    font-size: 1.5vw;
+    font-size: 1vw;
     color: var(--custom-darkblue);
     text-align: center;
 }
 
-.home-heading {
+.home-bulb-logo {
     position: absolute;
-    top: 55%;
+    top: 34.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.home-bulb-logo img {
+    width: 3.8vw;
+    height: 3.8vw;
+}
+
+.home-heading p {
+    position: absolute;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: var(--font-primary);
-    font-weight: 300;
-    font-size: 4vw;
+    font-weight: 700;
+    font-size: 6vw;
     color: var(--custom-darkblue);
     text-align: center;
 }
