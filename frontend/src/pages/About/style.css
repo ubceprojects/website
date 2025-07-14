@@ -1,0 +1,69 @@
+#about-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    background: #cbeffffa;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(203, 239, 255, 0.9) 63%, rgba(5, 82, 123, 0.9) 100%);
+}
+
+.about-main {
+    margin-top: 25vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.about-left > .photo {
+    width: 25vw;
+    height: 25vw;
+    border-radius: 50%;
+    background: url("https://static.wixstatic.com/media/082eb5_3ef3439f95d346f2b64f6f75dc19f109~mv2.jpg/v1/fit/w_1772,h_2314,q_90,enc_avif,quality_auto/082eb5_3ef3439f95d346f2b64f6f75dc19f109~mv2.jpg")
+        no-repeat center center / cover;
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
+    margin-right: -7vw;
+}
+
+.about-heading > h1 {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 5vw;
+    margin-bottom: 1vw;
+    color: var(--custom-darkblue);
+}
+
+.about-text {
+    width: 34vw;
+    font-size: 1.4vw;
+    font-family: var(--font-secondary);
+    color: var(--custom-darkblue);
+    letter-spacing: 2%;
+}
+
+.about-goals-container {
+    margin-top: 15vh;
+    clip-path: ellipse(98% 100% at bottom);
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--custom-blue);
+    display: flex;
+    justify-content: center;
+}
+
+.about-goals {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.goals-heading > h1 {
+    padding-top: 15vh;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 4vw;
+    color: var(--white);
+    margin-top: 10vh;
+}

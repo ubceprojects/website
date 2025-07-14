@@ -1,15 +1,13 @@
-import styles from '../../pages/MeetTheTeam/MeetTheTeam.module.css';
+import "../../pages/MeetTheTeam/style.css";
 
 const ProfileCard = ({ name, role, desc, img }) => (
-  <div className={styles.card}>
-    <div className={styles.cardOverlaySquare}></div>
-    <div className={styles.profilePic}>
-      {img && <img src={img} alt={name} className={styles.profileImg} />}
+    <div className="card">
+        <div className={"cardOverlaySquare"}></div>
+        <div className={"profilePic"}>{img && <img src={img} alt={name} className={"profileImg"} />}</div>
+        <div className={"profileName"}>{name}</div>
+        <div className={"profileRole"}>{role}</div>
+        <div className={"profileDescription"}>{desc}</div>
     </div>
-    <div className={styles.profileName}>{name}</div>
-    <div className={styles.profileRole}>{role}</div>
-    <div className={styles.profileDescription}>{desc}</div>
-  </div>
 );
 
-export default ProfileCard; 
+export default ProfileCard;

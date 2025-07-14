@@ -1,24 +1,19 @@
-import { useGLTF, Decal, useTexture } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import { useSpring, animated } from "@react-spring/three";
 import { useFrame } from "@react-three/fiber";
-import { use, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo, Suspense } from "react";
+import { CatmullRomCurve3, Vector3 } from "three";
 
-import * as THREE from "three";
+useGLTF.preload("/bulb-3d.glb");
 
 const Bulb = ({ props }) => {
-    const { nodes, materials } = useGLTF("/bulb-3d2.glb");
+    const { nodes, materials } = useGLTF("/bulb-3d.glb");
     const bulbRef = useRef(null);
     const [spiralComplete, setSpiralComplete] = useState(false);
 
     // CatmullRomCurve3 for the spiral path
     // Adjusted points for a more dynamic spiral path
-    const spiralCurve = new THREE.CatmullRomCurve3([
-        new THREE.Vector3(-200, 100, 200),
-        new THREE.Vector3(60, 75, -200),
-        new THREE.Vector3(90, 25, 230),
-        new THREE.Vector3(20, 15, 200),
-        new THREE.Vector3(0, 10, 0),
-    ]);
+    const spiralCurve = useMemo(() => new CatmullRomCurve3([new Vector3(-200, 100, 200), new Vector3(60, 75, -200), new Vector3(90, 25, 230), new Vector3(20, 15, 200), new Vector3(0, 10, 0)]));
 
     const { t } = useSpring({
         from: { t: 0 },
@@ -52,7 +47,7 @@ const Bulb = ({ props }) => {
                     rotation: [
                         -Math.PI / 2 + wobbleX,
                         Math.PI + wobbleY,
-                        Math.PI * 4 * (i + 1), // faster rotations (4π per cycle)
+                        Math.PI * 2 * (i + 1), // faster rotations (4π per cycle)
                     ],
                     config: {
                         friction: 60 + progress * 80, // lower initial friction = faster
@@ -64,7 +59,7 @@ const Bulb = ({ props }) => {
 
             // Final settle
             await next({
-                rotation: [-Math.PI / 2, Math.PI, Math.PI * 4 * spinCycles],
+                rotation: [-Math.PI / 2, Math.PI, Math.PI * 2 * spinCycles],
                 config: {
                     friction: 180,
                     tension: 120,
@@ -81,6 +76,7 @@ const Bulb = ({ props }) => {
 
     // Animate the bulb along the spiral curve based on the spring t value
     useFrame(() => {
+        if (sessionStorage.getItem("home-animated")) return;
         if (!spiralComplete) {
             const currentT = t.get();
             const position = spiralCurve.getPointAt(currentT);
@@ -92,6 +88,7 @@ const Bulb = ({ props }) => {
 
     // Reset position and scale after spiral animation completes to show Top Small Club
     useEffect(() => {
+        if (sessionStorage.getItem("home-animated")) return;
         if (spiralComplete) {
             setTimeout(() => {
                 api.start({
@@ -103,19 +100,28 @@ const Bulb = ({ props }) => {
     }, [spiralComplete]);
 
     return (
-        <group {...props} dispose={null}>
-            <group scale={0.01}>
-                <animated.group castShadow ref={bulbRef} rotation={rotation} position={springs.position} scale={springs.scale}>
-                    <mesh castShadow geometry={nodes.Roundcube_Material_0.geometry} material={materials["Material.001"]} />
-                    <mesh castShadow geometry={nodes.Roundcube_Material002_0.geometry} material={materials["Material.002"]} />
-                    <mesh castShadow geometry={nodes.Roundcube_Material012_0.geometry} material={materials["Material.012"]} />
-                    <mesh castShadow geometry={nodes.Roundcube_Material008_0.geometry} material={materials["Material.008"]} />
-                </animated.group>
+        <Suspense fallback={null}>
+            <group {...props} dispose={null}>
+                <group scale={0.01}>
+                    {sessionStorage.getItem("home-animated") ? (
+                        <group ref={bulbRef} rotation={[-Math.PI / 2, Math.PI, 0]} position={[0, 40, 0]} scale={6}>
+                            <mesh geometry={nodes.Roundcube_Material_0.geometry} material={materials["Material.001"]} />
+                            <mesh geometry={nodes.Roundcube_Material002_0.geometry} material={materials["Material.002"]} />
+                            <mesh geometry={nodes.Roundcube_Material012_0.geometry} material={materials["Material.012"]} />
+                            <mesh geometry={nodes.Roundcube_Material008_0.geometry} material={materials["Material.008"]} />
+                        </group>
+                    ) : (
+                        <animated.group ref={bulbRef} rotation={rotation} position={springs.position} scale={springs.scale}>
+                            <mesh geometry={nodes.Roundcube_Material_0.geometry} material={materials["Material.001"]} />
+                            <mesh geometry={nodes.Roundcube_Material002_0.geometry} material={materials["Material.002"]} />
+                            <mesh geometry={nodes.Roundcube_Material012_0.geometry} material={materials["Material.012"]} />
+                            <mesh geometry={nodes.Roundcube_Material008_0.geometry} material={materials["Material.008"]} />
+                        </animated.group>
+                    )}
+                </group>
             </group>
-        </group>
+        </Suspense>
     );
 };
-
-useGLTF.preload("/bulb-3d2.glb");
 
 export default Bulb;

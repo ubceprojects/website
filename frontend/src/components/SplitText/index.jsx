@@ -23,6 +23,9 @@ const SplitText = ({
     const animationCompletedRef = useRef(false);
 
     useEffect(() => {
+        const alreadyAnimated = sessionStorage.getItem("home-animated");
+
+        if (alreadyAnimated) return;
         const el = ref.current;
         if (!el || animationCompletedRef.current) return;
 

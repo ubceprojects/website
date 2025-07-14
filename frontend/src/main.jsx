@@ -20,11 +20,11 @@ const router = createBrowserRouter([
     {
         exact: true,
         path: "/faq",
-        element: <FAQTab />, 
+        element: <FAQTab />,
     },
     {
         exact: true,
-        path: "/meet-the-team",
+        path: "/team",
         element: <MeetTheTeam />,
     },
 ]);
@@ -32,4 +32,8 @@ const router = createBrowserRouter([
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
-root.render(<RouterProvider router={router} />);
+root.render(
+    <>
+        <RouterProvider router={router} />
+    </>
+);

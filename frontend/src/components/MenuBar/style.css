@@ -1,10 +1,11 @@
 .menu-bar {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
+    top: 0px;
+    left: 10%;
+    width: 80vw;
     height: 10vh;
     background-color: var(--custom-darkblue);
+    border-radius: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,13 +16,13 @@
 
 .menu-item {
     position: relative;
-    margin: 0 3vw;
-    font-family: var(--font-custom);
+    margin: 0 2vw;
+    font-family: var(--font-custom-light);
     font-size: 1.2rem;
     cursor: pointer;
 }
 
-.menu-item::after {
+.hover::after {
     content: "";
     position: absolute;
     bottom: -4px;
@@ -34,6 +35,38 @@
     transition: transform 0.3s ease-in-out;
 }
 
-.menu-item:hover::after {
+.hover:hover::after {
     transform: scaleX(1);
+}
+
+.menu-logo {
+    padding-right: 2vw;
+}
+
+.menu-socials {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 1.5vw;
+    padding-bottom: 0.3vw;
+    padding-left: 2vw;
+}
+
+.menu-socials i {
+    color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+.fa-linkedin-in:hover {
+    color: #0072b1;
+    transform: translateY(-2px);
+}
+
+.fa-instagram:hover {
+    color: #e1306c;
+    transform: translateY(-2px);
+}
+
+.fa-envelope:hover {
+    color: #34a853;
+    transform: translateY(-2px);
 }
