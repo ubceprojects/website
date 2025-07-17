@@ -1,4 +1,4 @@
-import "../../pages/MeetTheTeam/style.css";
+import "./style.css";
 
 const ProfileCard = ({ name, role, desc, img }) => (
     <div className="card">

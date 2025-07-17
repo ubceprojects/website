@@ -1,6 +1,6 @@
-import img1 from '../components/Graphics/a81fe36d212e41403f249d8d808fbead368cb8e4.jpg';
-import img2 from '../components/Graphics/ebb33bbaaa50a9fba08252e8c3ed9727d1bc3cae.jpg';
-import img3 from '../components/Graphics/0d756c3cc9da32972899a87c1b232d0f6e78a600.jpg';
+import img1 from '/a81fe36d212e41403f249d8d808fbead368cb8e4.jpg?url';
+import img2 from '/ebb33bbaaa50a9fba08252e8c3ed9727d1bc3cae.jpg?url';
+import img3 from '/0d756c3cc9da32972899a87c1b232d0f6e78a600.jpg?url';
 const teamData = [
   {
     name: "Alisa Ustenko",
@@ -35,7 +35,7 @@ const teamData = [
     role: "Marketing Coordinator",
     desc: "...",
   },
-  
+
 ];
 
 export default teamData;

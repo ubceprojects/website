@@ -1,5 +1,3 @@
-"use client";
-
 import "./style.css";
 import MenuBar from "../../components/MenuBar";
 import Footer from "../../components/Footer";

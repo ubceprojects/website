@@ -1,6 +1,5 @@
 import "./style.css";
 import MenuBar from "../../components/MenuBar";
-import aboutGraphic from "../../components/Graphics/about-graphic.png";
 import teamData from "../../data/teamData";
 import ProfileCard from "../../components/ProfileCard";
 import Footer from "../../components/Footer";
@@ -44,7 +43,7 @@ const MeetTheTeam = () => {
 
                 {/* Centered Image*/}
                 <div className="centeredImage">
-                    <img src={aboutGraphic} alt="About Graphic" />
+                    <img src={"/about-graphic.png"} alt="About Graphic" />
                 </div>
 
                 {/* Description text below image */}
